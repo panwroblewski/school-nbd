@@ -1,4 +1,7 @@
+import javafx.concurrent.Worker
+
 import scala.annotation.tailrec
+import scala.util.{Failure, Success, Try}
 
 object Main {
   def main(args: Array[String]) = {
@@ -15,6 +18,12 @@ object Main {
     exercise8()
     exercise9()
     exercise10()
+
+    class2Exercise1(daysOfWeek)
+    class2Exercise2()
+    class2Exercise3()
+    class2Exercise4()
+    class2Exercise5()
   }
 
   def exercise1(days: List[String]): Unit = {
@@ -111,10 +120,10 @@ object Main {
       "cheese" -> 2.99
     )
 
-    def applyPromotion(products: Map[String, Double]) = products.mapValues(_ * 0.9).toMap
+    def applySale(products: Map[String, Double]) = products.mapValues(_ * 0.9).toMap
 
     println(s"Old products: $products")
-    println(s"New products: ${applyPromotion(products)}")
+    println(s"New products: ${applySale(products)}")
   }
 
   def exercise6(): Unit = {
@@ -161,5 +170,148 @@ object Main {
     }
 
     println(s"absWithFilter(1.2, -10, -9.1, -5, 12, 14.5): ${absWithFilter(List(1.2, -10, -9.1, -5, 12, 14.5))}")
+  }
+
+  def class2Exercise1(days: List[String]): Unit = {
+    def toKindOfDayString(day: String): String = {
+      val workDay = "Praca"
+      val offDay = "Weekend"
+      val unknownDay = "Nie ma taiego dnia"
+      day match {
+        case "Poniedziałek" => workDay
+        case "Wtorek" => workDay
+        case "Sroda" => workDay
+        case "Czwartek" => workDay
+        case "Piątek" => workDay
+        case "Sobota" => offDay
+        case "Niedziela" => offDay
+        case _ => unknownDay
+      }
+    }
+
+    println(s"days.map(toKindOfDayString): ${days.map(toKindOfDayString)}")
+  }
+
+  def class2Exercise2(): Unit = {
+    class BankAccount() {
+
+      private var _balance: Double = 0
+
+      def this(balance: Double) {
+        this()
+        _balance = balance
+      }
+
+      def balance: Double = _balance
+
+      def deposit(amount: Double): Unit = {
+        println(s"Depositing $amount into account. Balance before: ${_balance}")
+        _balance += amount
+        println(s"Balance after: ${_balance}")
+      }
+
+      def withdraw(amount: Double): Unit = if (_balance < amount) println("Withdraw amount is greater then balance.") else {
+        println(s"Withdrawing $amount from account. Balance before: ${_balance}")
+        _balance -= amount
+        println(s"Balance after: ${_balance}")
+      }
+    }
+
+    println(s"Account1")
+    val account = new BankAccount(1000)
+    account.withdraw(500)
+    account.deposit(500)
+
+    println(s"Account2")
+    val account2 = new BankAccount()
+    account2.withdraw(500)
+    account2.deposit(500)
+    account2.withdraw(500)
+  }
+
+  def class2Exercise3(): Unit = {
+    case class Person(name: String, surname: String)
+
+    def customGreet(person: Person): Unit = {
+      person match {
+        case Person("John", "Doe") => println("Hello John, I suppose you do not have an id on you")
+        case Person("Jane", "Doe") => println("Hello Jane, it is a shame that you do not know you real name")
+        case Person("Jane", _) => println("Hello Jane, I hope your surname is other then Doe. Is it?")
+        case Person(name, surname) => println(s"Hello $name $surname, nice to meet you")
+        case _ => println("You are not human")
+      }
+    }
+
+    val person1 = Person("John", "Doe")
+    val person2 = Person("Jane", "Doe")
+    val person3 = Person("Jane", "Boe")
+    val person4 = Person("Micheal", "Jackson")
+
+    customGreet(person1)
+    customGreet(person2)
+    customGreet(person3)
+    customGreet(person4)
+  }
+
+  def class2Exercise4(): Unit = {
+    def mapIntSafe(value: Int, operation: Int => Int) = {
+      Try(value)
+        .map(operation)
+        .map(operation)
+        .map(operation)
+      match {
+        case Success(value) => value
+        case Failure(e) => e.printStackTrace(); value
+      }
+    }
+
+    def add1(value: Int) = value + 1
+
+    def divide0(value: Int) = value / 0
+
+    println(s"mapInt(10, add1): ${mapIntSafe(10, add1)}")
+    println(s"mapInt(10, divide0): ${mapIntSafe(10, divide0)}")
+  }
+
+  def class2Exercise5(): Unit = {
+    abstract class Person(val name: String, val surname: String) {
+      def tax: Double
+
+      override def toString: String = s"name: $name, surname: $surname, tax: $tax"
+    }
+    trait Student extends Person {
+      override def tax: Double = 0
+    }
+    trait Worker extends Person {
+      var _salary: Double = 0
+
+      override def tax: Double = this._salary * 0.2
+
+      def getSalary: Double = this._salary
+
+      def setSalary(value: Double): Unit = this._salary = value
+
+      override def toString: String = s"name: $name, surname: $surname, tax: $tax, salary: ${_salary}"
+    }
+    trait Tutor extends Worker {
+      override def tax: Double = this._salary * 0.1
+    }
+
+    val student = new Person("Jan", "Kowalski") with Student
+    val worker = new Person("Andrzej", "Pracowity") with Worker
+    val tutor = new Person("Robert", "Magister") with Tutor
+    val studentWorker = new Person("Dżony", "Kesz") with Student with Worker
+    val workerStudent = new Person("Kesz", "Dżony") with Worker with Student
+
+    worker.setSalary(2000)
+    tutor.setSalary(2000)
+    studentWorker.setSalary(2000)
+    workerStudent.setSalary(2000)
+
+    println(s"student: $student")
+    println(s"worker: $worker")
+    println(s"tutor: $tutor")
+    println(s"studentWorker: $studentWorker")
+    println(s"workerStudent: $workerStudent")
   }
 }
