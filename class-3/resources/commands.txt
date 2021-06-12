@@ -1,0 +1,34 @@
+"C:\Program Files\MongoDB\Server\4.4\bin\mongo.exe"
+
+mongoimport --file ./cwiczenia2.json --db nbd --jsonArray -c cwiczenia2
+
+show databases;
+use nbd;
+show tables;
+
+
+mongo nbd --quiet zapytanie_4.js > wyniki_4.json
+
+
+ mongoexport --db nbd --collection cwiczenia2 --query `
+ {
+             $expr: {
+                 $and: [
+                     {$gte: [{$toDouble: "$weight"}, 68]},
+                     {$lt: [{$toDouble: "$weight"}, 71.5]}
+                 ]
+             }
+         }
+ ` --out wyniki_4.json
+
+
+ mongo nbd --eval `db.cwiczenia2.find(
+                           {
+                               $expr: {
+                                   $and: [
+                                       {$gte: [{$toDouble: "$weight"}, 68]},
+                                       {$lt: [{$toDouble: "$weight"}, 71.5]}
+                                   ]
+                               }
+                           }
+                       ).toArray().length` > wyniki_4.json
