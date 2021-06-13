@@ -1,0 +1,81 @@
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvm/LeicDEUpkzGNlyK22usWXBQA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s14902>; rel="up"
+Last-Modified: Sun, 13 Jun 2021 12:51:57 GMT
+ETag: "3eXC8zBTG3sodafdesUwhW"
+Date: Sun, 13 Jun 2021 12:53:16 GMT
+Content-Type: application/json
+Content-Length: 111
+
+{
+    "first_name": "Cz這wiek",
+    "last_name": "Widmo",
+    "student_id": "s99999",
+    "is_active": true
+  }HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvm/LeicDEUpkzGNlyK22usWXBQA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s14902>; rel="up"
+Last-Modified: Sun, 13 Jun 2021 12:51:57 GMT
+ETag: "3eXC8zBTG3sodafdesUwhW"
+Date: Sun, 13 Jun 2021 12:53:48 GMT
+Content-Type: application/json
+Content-Length: 111
+
+{
+    "first_name": "Cz這wiek",
+    "last_name": "Widmo",
+    "student_id": "s99999",
+    "is_active": true
+  }HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvm/LeicDEUpkzGNlyK22usWXBQA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s14902>; rel="up"
+Last-Modified: Sun, 13 Jun 2021 12:51:57 GMT
+ETag: "3eXC8zBTG3sodafdesUwhW"
+Date: Sun, 13 Jun 2021 12:54:28 GMT
+Content-Type: application/json
+Content-Length: 111
+
+{
+    "first_name": "Cz這wiek",
+    "last_name": "Widmo",
+    "student_id": "s99999",
+    "is_active": true
+  }HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvm/LeicDEUpkzGNlyK22usWXBQA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s14902>; rel="up"
+Last-Modified: Sun, 13 Jun 2021 12:51:57 GMT
+ETag: "3eXC8zBTG3sodafdesUwhW"
+Date: Sun, 13 Jun 2021 12:55:08 GMT
+Content-Type: application/json
+Content-Length: 111
+
+{
+    "first_name": "Cz這wiek",
+    "last_name": "Widmo",
+    "student_id": "s99999",
+    "is_active": true
+  }HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvm/LeicDEUpkzGNlyK22usWXBQA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s14902>; rel="up"
+Last-Modified: Sun, 13 Jun 2021 12:51:57 GMT
+ETag: "3eXC8zBTG3sodafdesUwhW"
+Date: Sun, 13 Jun 2021 12:55:43 GMT
+Content-Type: application/json
+Content-Length: 111
+
+{
+    "first_name": "Cz這wiek",
+    "last_name": "Widmo",
+    "student_id": "s99999",
+    "is_active": true
+  }

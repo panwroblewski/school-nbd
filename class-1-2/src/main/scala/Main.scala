@@ -1,5 +1,3 @@
-import javafx.concurrent.Worker
-
 import scala.annotation.tailrec
 import scala.util.{Failure, Success, Try}
 
