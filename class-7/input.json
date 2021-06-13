@@ -1,0 +1,32 @@
+[
+  {
+    "first_name": "Adam",
+    "last_name": "Wroblewski",
+    "student_id": "s14902",
+    "is_active": true
+  },
+  {
+    "first_name": "Piotr",
+    "last_name": "Piotrowski",
+    "student_id": "s11111",
+    "is_active": true
+  },
+  {
+    "first_name": "Robert",
+    "last_name": "Robertowski",
+    "student_id": "s22222",
+    "is_active": true
+  },
+  {
+    "first_name": "Kazik",
+    "last_name": "Kazikowski",
+    "student_id": "s33333",
+    "is_active": true
+  },
+  {
+    "first_name": "Kamil",
+    "last_name": "Kamilkiewicz",
+    "student_id": "s44444",
+    "is_active": true
+  }
+]

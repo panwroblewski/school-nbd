@@ -1,0 +1,131 @@
+1.	Umieść w bazie (nazwa bucketa ma być Twoim numerem indeksu poprzedzonym literą „s”)
+5 wartości, gdzie każda z nich ma być dokumentem json mającym 4 pola co najmniej dwóch różnych typów. 
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+
+2.	Pobierz z bazy jedną z dodanych przez Ciebie wartości. 
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvm9LuPsZIpTIncfKYFRrdYsvCwA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s14902>; rel="up"
+Last-Modified: Sun, 13 Jun 2021 12:59:30 GMT
+ETag: "7IWyZk81p3fJQnTPqrXlYn"
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 112
+
+{
+    "first_name": "Adam",
+    "last_name": "Wroblewski",
+    "student_id": "s14902",
+    "is_active": true
+  }
+3.	Zmodyfikuj jedną z wartości – dodając dodatkowe pole do dokumentu.
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+
+4.	Zmodyfikuj jedną z wartości – usuwając jedną pole z wybranego dokumentu.
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+
+5.	Zmodyfikuj jedną z wartości – zmieniając wartość jednego z pól.
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+
+6.	Usuń jeden z dokumentów z bazy.
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: application/json
+Content-Length: 0
+
+
+7.	Spróbuj pobrać z bazy wartość, która nie istnieje w tej bazie.
+HTTP/1.1 404 Object Not Found
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:30 GMT
+Content-Type: text/plain
+Content-Length: 10
+
+not found
+
+8.	Dodaj do bazy 1 dokument json (zawierający 1 pole), ale nie specyfikuj klucza.
+HTTP/1.1 201 Created Vary: Accept-Encoding Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found) Location: /buckets/s14902/keys/4Pf8N4iAz768vEyb30whbBGdu5o Date: Sun, 13 Jun 2021 12:59:30 GMT Content-Type: application/json Content-Length: 0
+
+9.	Pobierz z bazy element z zadania 8.
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvm9LuKcPZDNnMCUy5rEyGNVa3eLLAgA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s14902>; rel="up"
+Last-Modified: Sun, 13 Jun 2021 12:59:30 GMT
+ETag: "3mdy4jO0jVu3ks4Z8mr5T1"
+Date: Sun, 13 Jun 2021 12:59:31 GMT
+Content-Type: application/json
+Content-Length: 111
+
+{
+    "first_name": "Cz�owiek",
+    "last_name": "Widmo",
+    "student_id": "s99999",
+    "is_active": true
+  }
+10.	Usuń z bazy element z zadania 8.
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 13 Jun 2021 12:59:31 GMT
+Content-Type: application/json
+Content-Length: 0
+
