@@ -24,4 +24,3 @@ fetchedUser.delete()
 fetchedUser = bucket.get('s123456')
 print("Fetched deleted: ")
 print(fetchedUser.data)
-

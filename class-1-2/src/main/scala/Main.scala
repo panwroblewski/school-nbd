@@ -174,7 +174,7 @@ object Main {
     def toKindOfDayString(day: String): String = {
       val workDay = "Praca"
       val offDay = "Weekend"
-      val unknownDay = "Nie ma taiego dnia"
+      val unknownDay = "Nie ma takiego dnia"
       day match {
         case "Poniedziałek" => workDay
         case "Wtorek" => workDay

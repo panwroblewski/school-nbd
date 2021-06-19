@@ -20,10 +20,10 @@ RETURN p, distance
   ORDER BY distance ASC
 
 //union?? this query returns empty result
-MATCH fromDarjeelingPath = (:town {name: 'Darjeeling'})-[r:twowheeler*]->(target)
-  WHERE ALL (r IN relationships(fromDarjeelingPath)
-    WHERE r.summer = 'true')
-RETURN target
+//MATCH fromDarjeelingPath = (:town {name: 'Darjeeling'})-[r:twowheeler*]->(target)
+//  WHERE ALL (r IN relationships(fromDarjeelingPath)
+//    WHERE r.summer = 'true')
+//RETURN target
 
 //-- Część 2 – Połączenia lotnicze
 //-- Zaimportuj dane uruchamiając skrypt task3.cypher. Napisz następujące zapytania:
@@ -81,10 +81,30 @@ RETURN p, totalPrice
 //-- 9.	Uszereguj linie lotnicze według ilości miast, pomiędzy którymi oferują połączenia
 //(unikalnych miast biorących udział w relacjach :ORIGIN i :DESTINATION węzłów typu Flight obsługiwanych przez daną linię)
 // ZAPYTANIE SIE ZAWIESZA
-MATCH p = (:Airport)-[:ORIGIN|DESTINATION*]-(f:Flight)-[:ORIGIN|DESTINATION*]-(:Airport)
-WITH p, f.airline as airline, reduce(acc = 0, n IN [x IN nodes(p) WHERE 'Flight' IN labels(x)] | acc + 1) AS totalNumberOfFlights
-RETURN p, airline, totalNumberOfFlights
-  ORDER BY totalNumberOfFlights asc LIMIT 1
+//MATCH p = (:Airport)-[:ORIGIN|DESTINATION*]-(f:Flight)-[:ORIGIN|DESTINATION*]-(:Airport)
+//WITH p, f.airline as airline, reduce(acc = 0, n IN [x IN nodes(p) WHERE 'Flight' IN labels(x)] | acc + 1) AS totalNumberOfFlights
+//RETURN p, airline, totalNumberOfFlights
+//  ORDER BY totalNumberOfFlights asc LIMIT 1
+
+MATCH (flight:Flight)
+WITH collect(flight.airline) as airlines
+UNWIND airlines as unwind_airlines
+RETURN unwind_airlines, count(unwind_airlines)
+
+//MATCH p = (o:Airport)<-[:ORIGIN]->(f:Flight)<-[:DESTINATION]->(d:Airport)
+//WITH f.airline AS airline, COLLECT(o.name) AS oNames, COLLECT(d.name) AS dNames
+//WITH airline, collect(distinct REDUCE(s = [], name IN COLLECT(oNames, dNames) | s + name)) as uniqueNames
+//WITH airline , count(uniqueNames) AS uniqueNamesCount
+//  order by flight_count desc
+//return airline, uniqueNamesCount
+
+//
+//MATCH p = (c:Airport)<-[:ORIGIN|DESTINATION]-(f:Flight)
+//UNWIND c.name AS unwindCities
+//WITH p, f.airline as airline, COLLECT(distinct unwindCities) AS cNames
+//WITH airline, count(cNames) AS uniqueNamesCount
+//  order by uniqueNamesCount desc
+//return airline, uniqueNamesCount
 
 
 //-- 10.	Znajdź najtańszą trasę łączącą 3 różne porty lotnicze

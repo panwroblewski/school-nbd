@@ -1,22 +1,27 @@
 printjson(
     db.cwiczenia2.mapReduce(
         function () {
+            const bmi = parseFloat(this.weight) / Math.pow((parseFloat(this.height) / 100), 2)
             emit(
                 this.nationality,
                 {
                     count: 1,
-                    bmi: parseFloat(this.weight) / Math.pow((parseFloat(this.height) / 100), 2)
+                    min: bmi,
+                    max: bmi,
+                    sum: bmi
                 }
             );
         },
         function (key, values) {
             const count = values.map(v => v.count).reduce((a, b) => a + b, 0);
-            const bmis = values.map(v => v.bmi);
+            const min =  Math.min(...values.map(v => v.min));
+            const max = Math.max(...values.map(v => v.max));
+            const sum = values.map(v => v.sum).reduce((a, b) => a + b, 0);
             return {
                 count: count,
-                min: Math.min(...bmis),
-                max: Math.max(...bmis),
-                sum: bmis.reduce((a, b) => a + b, 0)
+                min: min,
+                max: max,
+                sum: sum
             };
         },
         {

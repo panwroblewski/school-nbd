@@ -1,0 +1,7 @@
+C:\Python27\python.exe C:/workspace/private/school/school-nbd/class-8/riak_client.py
+Fetched: {"student_id": "s123456", "first_name": "Karol", "last_name": "Karolowski", "is_active": true}
+Fetched updated: {"student_id": "s123456", "first_name": "Karol", "last_name": "Karolowski", "is_active": false}
+Fetched deleted:
+None
+
+Process finished with exit code 0
